@@ -1,0 +1,8 @@
+# depslib dependency file v1.0
+1587451186 source:c:\prog\c++\квадрат\sq.cpp
+
+1587451396 source:c:\prog\c++\квадрат\main.cpp
+	"sq.hpp"
+
+1587451336 c:\prog\c++\квадрат\sq.hpp
+
