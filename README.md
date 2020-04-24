@@ -1,6 +1,7 @@
 # p2-17 Филиппов
 [22.04.2020](#22.04.2020)</br>
-[23.04.2020](#23.04.2020)
+[23.04.2020](#23.04.2020)</br>
+[23.04.2020](#24.04.2020)</br>
 ***
 ## <a name="22.04.2020">22.04.2020</a>
 ### Раздел 2.3
@@ -139,4 +140,88 @@ void swap_min(int *m[], unsigned rows, unsigned cols)
     m[num] = m[0];
     m[0] = tmp;
 }
+```
+## <a name="24.04.2020">24.04.2020</a>
+### Раздел 3.1
+3.1.6
+![Image alt](https://github.com/prog-kkkmt/p2-17/raw/Филиппов/images/3.1.6.png)
+3.1.7
+![Image alt](https://github.com/prog-kkkmt/p2-17/raw/Филиппов/images/3.1.7.png)
+3.1.8
+![Image alt](https://github.com/prog-kkkmt/p2-17/raw/Филиппов/images/3.1.8.png)
+### Раздел 3.3
+3.3.10
+В этой задаче требуется реализовать конструктор, который принимает на вход C-style строку, вычисляет ее размер и сохраняет его в поле size, кроме того, конструктор должен аллоцировать память достаточную для хранения копии переданной строки, копирует переданную строку в выделенную память и сохраняет указатель на начало этой области памяти в поле str. 
+```C++
+#include <cstddef> // size_t
+#include <cstring> // strlen, strcpy
+
+struct String {
+
+    /* Реализуйте этот конструктор */
+	String(const char *str = "") : size(strlen(str))
+    {
+        this->size = strlen(str);
+        this->str = new char[size + 1];
+        strcpy(this->str, str);
+    }
+	size_t size;
+	char *str;
+};
+```
+3.3.11
+В этой задаче требуется реализовать заполняющий конструктор принимает число и символ, и создает строку с заданным количеством повторений переданного символа.
+```C++
+#include <cstddef> // size_t
+#include <cstring> // strlen, strcpy
+
+struct String {
+
+    /* Реализуйте этот конструктор */
+	String(size_t n, char c)
+    {
+        this->size = n;
+        this->str = new char[size + 1];
+        for(size_t i = 0; i != size; i++)
+            this->str[i] = c;
+        this->str[size + 1] = '\0';
+    }
+
+    /* и деструктор */
+	~String()
+    {
+        delete[] str;
+    }
+
+
+	size_t size;
+	char *str;
+};
+```
+3.3.12
+В этой задаче требуется реализовать метод append.
+```C++
+#include <cstddef> // size_t
+#include <cstring> // strlen, strcpy
+
+struct String {
+	String(const char *str = "");
+	String(size_t n, char c);
+	~String();
+
+
+    /* Реализуйте этот метод. */
+	void append(String &other)
+    {
+        char *str = new char[size + other.size + 1];
+        strcpy(str, this->str);
+        strcpy(str + size, other.str);
+        delete[] this->str;
+        this->str = str;
+        this->size = size + other.size;
+    }
+
+	size_t size;
+	char *str;
+};
 ```
