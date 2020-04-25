@@ -1,0 +1,11 @@
+# depslib dependency file v1.0
+1587820471 source:c:\prog\c++\massiw\input.cpp
+	<iostream>
+
+1587820617 source:c:\prog\c++\massiw\max.cpp
+
+1587820724 source:c:\prog\c++\massiw\summ.cpp
+
+1587820762 source:c:\prog\c++\massiw\print.cpp
+	<iostream>
+
