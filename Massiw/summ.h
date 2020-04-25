@@ -1,9 +1,8 @@
 #ifndef SUM_H_INCLUDED
 #define SUM_H_INCLUDED
 
-/** Нахождение суммы */
-int sum(int *v, int n);
+int sum(int a[], int n);
 
 
-#endif // SUM_H_INCLUDED
+#endif
 
