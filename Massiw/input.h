@@ -1,9 +1,8 @@
 #ifndef INPUT_H_INCLUDED
 #define INPUT_H_INCLUDED
 
-/** Заполнение */
-void input(int *v, int n);
+void input(int a[], int n);
 
 
-#endif // INPUT_H_INCLUDED
+#endif
 
