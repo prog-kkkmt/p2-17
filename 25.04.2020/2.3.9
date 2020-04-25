@@ -1,0 +1,14 @@
+void rotate(int a[], unsigned size, int shift)
+{
+    for (int i = 0; i < shift; i++)
+    {
+        int mem = a[0];
+
+        for (int ii = 0; ii < size - 1; ii++)
+        {
+            a[ii] = a[ii + 1];
+        }
+
+        a[size - 1] = mem;
+    }
+}
