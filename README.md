@@ -3,6 +3,7 @@
 [23.04.2020](#23.04.2020)</br>
 [24.04.2020](#24.04.2020)</br>
 [25.04.2020](#25.04.2020)</br>
+[27.04.2020](#27.04.2020)</br>
 ***
 ## <a name="22.04.2020">22.04.2020</a>
 ### Раздел 2.3
@@ -270,3 +271,66 @@ int &get_i(Cls &cls) {
 ![Image alt](https://github.com/prog-kkkmt/p2-17/raw/Филиппов/images/3.6.6.png)
 3.6.12
 ![Image alt](https://github.com/prog-kkkmt/p2-17/raw/Филиппов/images/3.6.12.png)
+## <a name="27.04.2020">27.04.2020</a>
+### Раздел 3.7
+3.7.9
+![Image alt](https://github.com/prog-kkkmt/p2-17/raw/Филиппов/images/3.7.9.png)
+3.7.10
+Добавить в класс String реализацию конструктора копирования.
+```C++
+#include <cstddef> // size_t
+#include <cstring> // strlen, strcpy
+
+struct String {
+	String(const char *str = "");
+	String(size_t n, char c);
+	~String();
+
+
+    /* Реализуйте конструктор копирования */
+	String(const String &other): String() 
+    {
+        append(other);        
+    }
+
+
+	void append(const String &other);
+
+	size_t size;
+	char *str;
+};
+```
+3.7.11
+Завершить класс String, добавив к нему оператор присваивания.
+```C++
+#include <algorithm> // std::swap
+#include <cstddef>   // size_t
+#include <cstring>   // strlen, strcpy
+
+struct String {
+	String(const char *str = "");
+	String(size_t n, char c);
+	String(const String &other);
+	~String();
+
+    void swap(String& other)
+    {
+        std::swap(size, other.size);
+        std::swap(str, other.str);
+    }
+
+	String &operator=(const String &other)
+    {
+        if(this != &other)
+            String(other).swap(*this);
+        return *this;
+    }
+
+	void append(const String &other);
+
+	size_t size;
+	char *str;
+};
+```
+3.7.12
+![Image alt](https://github.com/prog-kkkmt/p2-17/raw/Филиппов/images/3.7.12.png)
