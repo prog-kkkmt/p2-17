@@ -4,6 +4,7 @@
 [24.04.2020](#24.04.2020)</br>
 [25.04.2020](#25.04.2020)</br>
 [27.04.2020](#27.04.2020)</br>
+[28.04.2020](#28.04.2020)</br>
 ***
 ## <a name="22.04.2020">22.04.2020</a>
 ### Раздел 2.3
@@ -334,3 +335,93 @@ struct String {
 ```
 3.7.12
 ![Image alt](https://github.com/prog-kkkmt/p2-17/raw/Филиппов/images/3.7.12.png)
+## <a name="28.04.2020">28.04.2020</a>
+### Раздел 4.1
+4.1.7
+Свяжите следующие классы в иерархию наследования: Character (Персонаж), LongRange (Персонаж дальнего действия), Wizard (Маг), SwordsMan (Мечник), Archer (Лучник).
+```C++
+#include <string> // std::string
+
+struct Character
+{
+    std::string const & name() const;
+    unsigned health() const;
+};
+
+struct LongRange : Character
+{
+    std::string const & name() const;
+    unsigned health() const;
+
+    unsigned range() const;
+};
+
+struct SwordsMan : Character
+{
+    std::string const & name() const;
+    unsigned health() const;
+
+    unsigned strength() const;    
+};
+
+struct Wizard : LongRange
+{
+    std::string const & name() const;
+    unsigned health() const;
+
+    unsigned range() const;
+
+    unsigned mana() const;
+};
+
+struct Archer : LongRange
+{
+    std::string const & name() const;
+    unsigned health() const;
+
+    unsigned range() const;
+
+    unsigned accuracy() const;
+};
+```
+4.1.9
+В этом задании вам нужно реализовать функцию get_foo (сигнатура которой намерено не приводится в задании полностью, вам нужно подумать и вывести ее самостоятельно).
+```C++
+#include <algorithm> // std::swap
+#include <cstddef>   // size_t
+#include <cstring>   // strlen, strcpy
+
+struct String {
+	String(const char *str = "");
+	String(size_t n, char c);
+	String(const String &other);
+	~String();
+
+    void swap(String& other)
+    {
+        std::swap(size, other.size);
+        std::swap(str, other.str);
+    }
+
+	String &operator=(const String &other)
+    {
+        if(this != &other)
+            String(other).swap(*this);
+        return *this;
+    }
+
+	void append(const String &other);
+
+	size_t size;
+	char *str;
+};
+```
+### Раздел 4.2
+4.2.6
+![Image alt](https://github.com/prog-kkkmt/p2-17/raw/Филиппов/images/4.2.6.png)
+4.2.7
+![Image alt](https://github.com/prog-kkkmt/p2-17/raw/Филиппов/images/4.2.7.png)
+4.2.8
+![Image alt](https://github.com/prog-kkkmt/p2-17/raw/Филиппов/images/4.2.8.png)
+4.2.9
+![Image alt](https://github.com/prog-kkkmt/p2-17/raw/Филиппов/images/4.2.9.png)
