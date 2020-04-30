@@ -653,13 +653,15 @@ int main()
 {
     std::string s;
     std::ifstream file("Input.txt");
+    std::ofstream file2("output.txt");
     getline(file, s);
     for(int i = 0; i != s.size(); i++)
     {
         if(!ispunct(s[i]))
-            std::cout << s[i];
+            file2 << s[i];
     }
     file.close();
+    file2.close();
     return 0;
 }
 ```
