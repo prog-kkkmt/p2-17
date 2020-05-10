@@ -175,6 +175,7 @@ import { Polygon } from "./polygon";
                     // );
                     ctx.fillStyle = "black";
                     ctx.textAlign = 'center';
+                    ctx.textBaseline="middle";
                     ctx.fillText(ar.name,(st.x + fn.x)/2, (st.y + fn.y + 10)/2);
                 }
                 ctx.fill();
