@@ -7,7 +7,7 @@ using namespace std;
 
 class Movie
 {
-public:
+private:
 	vector<string> Name;
 	vector<string> Genre;
 	vector<int> code;
@@ -17,6 +17,7 @@ public:
 	string G;
 	string Name_File;
 
+public:
 	Movie(string Name_Inp)
 	{
 		Name_File = Name_Inp;
