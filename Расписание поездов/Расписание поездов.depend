@@ -1,0 +1,8 @@
+# depslib dependency file v1.0
+1589390453 source:c:\prog\c++\Расписание поездов\main.cpp
+	<iostream>
+	<string>
+	<fstream>
+	<locale>
+	<cstdlib>
+
