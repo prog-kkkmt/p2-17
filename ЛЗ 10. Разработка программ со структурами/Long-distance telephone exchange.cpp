@@ -19,11 +19,6 @@ public:
         this->price = price;
     }
 
-    void change_price(double value)
-    {
-        this->price = value;
-    }
-
     void change(int num, int value)
     {
         switch (num)
@@ -38,17 +33,103 @@ public:
             this->max_distance = value;
             break;
         case 4:
-            change_price(value);
+            this->price = value;
             break;
         }
     }
 
-    
+    void write_to_file(std::string name_file)
+    {
+        std::ofstream out;
+        out.open(name_file, std::ios::app);
+        out << code << " " << max_distance << " " << min_distance << " " << price << std::endl;
+        out.close();
+    }
 };
 
-void read_file(std::vector<Rate>& rates)
+class Cities
 {
-    std::ifstream in("input.txt");
+public:
+    int code;
+    double distance;
+    int code_rate;
+
+    Cities(int code_city, double distance, int code_rate)
+    {
+        this->code = code_city;
+        this->distance = distance;
+        this->code_rate = code_rate;
+    }
+
+    void change(int num, int value)
+    {
+        switch (num)
+        {
+        case 1:
+            this->code = value;
+            break;
+        case 2:
+            this->distance = value;
+            break;
+        case 3:
+            this->code_rate = value;
+            break;
+        }
+    }
+
+    void write_to_file(std::string name_file)
+    {
+        std::ofstream out;
+        out.open(name_file, std::ios::app);
+        out << code << " " << distance << " " << code_rate << std::endl;
+        out.close();
+    }
+};
+
+class Conversations
+{
+public:
+    int code;
+    int code_city;
+    std::string start;
+    int duration;
+
+    Conversations(int code, int code_city, std::string start, int duration)
+    {
+        this->code = code;
+        this->code_city = code_city;
+        this->start = start;
+        this->duration = duration;
+    }
+
+    void change(int num, int value)
+    {
+        switch (num)
+        {
+        case 1:
+            this->code = value;
+            break;
+        case 2:
+            this->code_city = value;
+            break;
+        case 3:
+            this->duration = value;
+            break;
+        }
+    }
+
+    void write_to_file(std::string name_file)
+    {
+        std::ofstream out;
+        out.open(name_file, std::ios::app);
+        out << code << " " << code_city << " " << start << " " << duration << std::endl;
+        out.close();
+    }
+};
+
+void read_file_rate(std::vector<Rate>& rates, std::string name_file)
+{
+    std::ifstream in(name_file);
     int code, min_dist, max_dist;
     double price;
     while (in >> code >> min_dist >> max_dist >> price)
@@ -59,36 +140,62 @@ void read_file(std::vector<Rate>& rates)
     in.close();
 }
 
-int search_record(std::vector<Rate>& rates, int num)
+void read_file_city(std::vector<Cities>& cities, std::string name_file)
 {
-    for (int i = 0; i < rates.size(); i++)
-        if (rates[i].code == num)
-            return i;
+    std::ifstream in(name_file);
+    int code, code_rate;
+    double distance;
+    while (in >> code >> distance >> code_rate)
+    {
+        Cities c(code, distance, code_rate);
+        cities.push_back(c);
+    }
+    in.close();
 }
 
-void delete_record(std::vector<Rate>& rates, int num)
+void read_file_conversation(std::vector<Conversations>& conversation, std::string name_file)
 {
-    rates.erase(rates.begin() + num);
+    std::ifstream in(name_file);
+    int code;
+    int code_city;
+    std::string start;
+    int duration;
+    while (in >> code >> code_city >> start >> duration)
+    {
+        Conversations c(code, code_city, start, duration);
+        conversation.push_back(c);
+    }
+    in.close();
 }
 
-void add_record(std::vector<Rate>& rates, int code, int min_dist, int max_dist, double price)
+int search_record_rate(std::vector<Rate>& obj, int num)
 {
-    Rate r(code, min_dist, max_dist, price);
-    rates.push_back(r);
+    int i;
+    for (i = 0; obj[i].code != num; i++)
+        ;
+    return i;
 }
 
-void write_file(std::vector<Rate>& rates)
+int search_record_city(std::vector<Cities>& obj, int num)
 {
-    std::ofstream out;
-    out.open("output.txt");
-    if (out.is_open())
-        for (int i = 0; i < rates.size(); i++)
-            out << rates[i].code << " " << rates[i].max_distance << " " << rates[i].min_distance << " " << rates[i].price << std::endl;
+    int i;
+    for (i = 0; obj[i].code != num; i++)
+        ;
+    return i;
 }
 
-int menu(std::vector<Rate>& rates)
+int search_record_conversation(std::vector<Conversations>& obj, int num)
+{
+    int i;
+    for (i = 0; obj[i].code != num; i++)
+        ;
+    return i;
+}
+
+int menu(std::vector<Rate>& rates, std::vector<Cities> &cities, std::vector<Conversations> &conversations, std::string table_name)
 {
     int choice;
+    std::cout << table_name << std::endl;
     std::cout << "1) Выгрузить из файла input.txt" << std::endl;
     std::cout << "2) Удалить запись" << std::endl;
     std::cout << "3) Добавить запись" << std::endl;
@@ -100,9 +207,14 @@ int menu(std::vector<Rate>& rates)
     {
     case 1:
     {
-        read_file(rates);
+        if(table_name == "rates")
+            read_file_rate(rates, "input_rates.txt");
+        else if(table_name == "cities")
+            read_file_city(cities, "input_cities.txt");
+        else
+            read_file_conversation(conversations, "input_conversations.txt");
         std::cout << "Удачно" << std::endl;
-        menu(rates);
+        menu(rates, cities, conversations, table_name);
         break;
     }
     case 2:
@@ -110,19 +222,48 @@ int menu(std::vector<Rate>& rates)
         int num;
         std::cout << "Код записи" << std::endl;
         std::cin >> num;
-        delete_record(rates, search_record(rates, num));
-        menu(rates);
+        if (table_name == "rates")
+            rates.erase(rates.begin() + search_record_rate(rates, num));
+        else if (table_name == "cities")
+            cities.erase(cities.begin() + search_record_city(cities, num));
+        else
+            conversations.erase(conversations.begin() + search_record_conversation(conversations, num));
+        menu(rates, cities, conversations, table_name);
         break;
     }
     case 3:
     {
-        int code, min_dist, max_dist;
-        double price;
-        std::cout << "Input code, min dist, max dist, price" << std::endl;
-        std::cin >> code >> min_dist >> max_dist >> price;
-        add_record(rates, code, min_dist, max_dist, price);
+        if (table_name == "rates")
+        {
+            int code, min_dist, max_dist;
+            double price;
+            std::cout << "Input code, min dist, max dist, price" << std::endl;
+            std::cin >> code >> min_dist >> max_dist >> price;
+            Rate r(code, min_dist, max_dist, price);
+            rates.push_back(r);
+        }
+        else if (table_name == "cities")
+        {
+            int code, code_rate;
+            double distance;
+            std::cout << "Input code, distance, code rate" << std::endl;
+            std::cin >> code >> distance >> code_rate;
+            Cities c(code, distance, code_rate);
+            cities.push_back(c);
+        }
+        else
+        {
+            int code;
+            int code_city;
+            std::string start;
+            int duration;
+            std::cout << "Input code, code_city, start, duration" << std::endl;
+            std::cin >> code >> code_city >> start >> duration;
+            Conversations c(code, code_city, start, duration);
+            conversations.push_back(c);
+        }
         std::cout << "Удачно" << std::endl;
-        menu(rates);
+        menu(rates, cities, conversations, table_name);
         break;
     }
     case 4:
@@ -130,23 +271,48 @@ int menu(std::vector<Rate>& rates)
         int num;
         std::cout << "Код записи" << std::endl;
         std::cin >> num;
-        std::cout << "Изменить 1 code; 2 min dist; 3 max dist; 4 price (номер значение)" << std::endl;
-        int c, value;
-        std::cin >> c >> value;
-        rates[search_record(rates, num)].change(c, value);
-        menu(rates);
+        if (table_name == "rates")
+        {
+            std::cout << "Изменить 1 code; 2 min dist; 3 max dist; 4 price (номер значение)" << std::endl;
+            int c, value;
+            std::cin >> c >> value;
+            rates[search_record_rate(rates, num)].change(c, value);
+        }
+        else if (table_name == "cities")
+        {
+            std::cout << "Изменить 1 code; 2 distance; 3 code rate (номер значение)" << std::endl;
+            int c, value;
+            std::cin >> c >> value;
+            cities[search_record_city(cities, num)].change(c, value);
+        }
+        else
+        {
+            std::cout << "Изменить 1 code; 2 code_city; 3 duration (номер значение)" << std::endl;
+            int c, value;
+            std::cin >> c >> value;
+            conversations[search_record_conversation(conversations, num)].change(c, value);
+        }
+        menu(rates, cities, conversations, table_name);
         break;
     }
     case 5:
     {
-        write_file(rates);
-        menu(rates);
+        if (table_name == "rates")
+            for (int i = 0; i < rates.size(); i++)
+                rates[i].write_to_file("output_rate.txt");
+        else if (table_name == "cities")
+            for (int i = 0; i < cities.size(); i++)
+                cities[i].write_to_file("output_city.txt");
+        else
+            for (int i = 0; i < conversations.size(); i++)
+                conversations[i].write_to_file("output_conversation.txt");
+        menu(rates, cities, conversations, table_name);
         break;
     }
     case 6:
         return 0;
     default:
-        menu(rates);
+        menu(rates, cities, conversations, table_name);
         break;
     }
 }
@@ -155,6 +321,17 @@ int main()
 {
     setlocale(LC_ALL, "Russian");
     std::vector<Rate> rates;
-    menu(rates);
+    std::vector<Cities> cities;
+    std::vector<Conversations> conversations;
+    std::string table_name;
+    while (1)
+    {
+        std::cout << "Введите название таблицы (rates, cities, conversations)" << std::endl;
+        std::cin >> table_name;
+        if (table_name == "rates" or table_name == "cities" or table_name == "conversations")
+            break;
+    }
+
+    menu(rates, cities, conversations, table_name);
     return 0;
 }
