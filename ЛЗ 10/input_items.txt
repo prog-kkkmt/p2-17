@@ -1,0 +1,3 @@
+12 hohohoh1 name1 edizm1
+14 hohohoh2 name2 edizm2
+17 hohohoh3 name3 edizm3
