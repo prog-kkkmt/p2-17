@@ -15,13 +15,13 @@ int main()
     vector<str>v;
     str tempV;
 
-    cin >> *tempV.a;
+    cin >> tempV.a;
     v.push_back(tempV);
 
-    cin >> *tempV.a;
+    cin >> tempV.a;
     v.push_back(tempV);
 
-    cin >> *tempV.a;
+    cin >> tempV.a;
     v.push_back(tempV);
 
     cout << v[0].a << v[1].a << v[2].a;
