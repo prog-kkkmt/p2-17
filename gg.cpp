@@ -1,3 +1,5 @@
+//При вводе 1 2 3 выводит 333
+
 #include <iostream>
 #include <vector>
 
