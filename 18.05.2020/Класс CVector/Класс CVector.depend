@@ -1,0 +1,9 @@
+# depslib dependency file v1.0
+1589784895 source:c:\prog\c++\Класс cvector\main.cpp
+	"vector.h"
+
+1589784902 c:\prog\c++\Класс cvector\vector.h
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+
