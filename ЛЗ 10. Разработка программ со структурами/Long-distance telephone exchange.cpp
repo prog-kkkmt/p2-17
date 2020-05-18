@@ -91,15 +91,18 @@ class Conversations
 public:
     int code;
     int code_city;
-    std::string start;
+    char* start;
+    size_t len;
     int duration;
 
-    Conversations(int code, int code_city, std::string start, int duration)
+    Conversations(int code, int code_city, std::string str, int duration)
     {
         this->code = code;
         this->code_city = code_city;
-        this->start = start;
         this->duration = duration;
+        this->len = str.length() + 1;
+        this->start = new char[str.length() + 1];
+        std::strcpy(this->start, str.c_str());
     }
 
     void change(int num, int value)
@@ -125,6 +128,11 @@ public:
         out << code << " " << code_city << " " << start << " " << duration << std::endl;
         out.close();
     }
+
+    void delete_member()
+    {
+        delete[] start;
+    }
 };
 
 void read_file_rate(std::vector<Rate>& rates, std::string name_file)
@@ -133,10 +141,7 @@ void read_file_rate(std::vector<Rate>& rates, std::string name_file)
     int code, min_dist, max_dist;
     double price;
     while (in >> code >> min_dist >> max_dist >> price)
-    {
-        Rate r(code, min_dist, max_dist, price);
-        rates.push_back(r);
-    }
+        rates.push_back(Rate(code, min_dist, max_dist, price));
     in.close();
 }
 
@@ -146,10 +151,7 @@ void read_file_city(std::vector<Cities>& cities, std::string name_file)
     int code, code_rate;
     double distance;
     while (in >> code >> distance >> code_rate)
-    {
-        Cities c(code, distance, code_rate);
-        cities.push_back(c);
-    }
+        cities.push_back(Cities(code, distance, code_rate));
     in.close();
 }
 
@@ -161,10 +163,7 @@ void read_file_conversation(std::vector<Conversations>& conversation, std::strin
     std::string start;
     int duration;
     while (in >> code >> code_city >> start >> duration)
-    {
-        Conversations c(code, code_city, start, duration);
-        conversation.push_back(c);
-    }
+        conversation.emplace_back(code, code_city, start, duration);
     in.close();
 }
 
@@ -239,8 +238,7 @@ int menu(std::vector<Rate>& rates, std::vector<Cities> &cities, std::vector<Conv
             double price;
             std::cout << "Input code, min dist, max dist, price" << std::endl;
             std::cin >> code >> min_dist >> max_dist >> price;
-            Rate r(code, min_dist, max_dist, price);
-            rates.push_back(r);
+            rates.push_back(Rate(code, min_dist, max_dist, price));
         }
         else if (table_name == "cities")
         {
@@ -248,8 +246,7 @@ int menu(std::vector<Rate>& rates, std::vector<Cities> &cities, std::vector<Conv
             double distance;
             std::cout << "Input code, distance, code rate" << std::endl;
             std::cin >> code >> distance >> code_rate;
-            Cities c(code, distance, code_rate);
-            cities.push_back(c);
+            cities.push_back(Cities(code, distance, code_rate));
         }
         else
         {
@@ -259,8 +256,7 @@ int menu(std::vector<Rate>& rates, std::vector<Cities> &cities, std::vector<Conv
             int duration;
             std::cout << "Input code, code_city, start, duration" << std::endl;
             std::cin >> code >> code_city >> start >> duration;
-            Conversations c(code, code_city, start, duration);
-            conversations.push_back(c);
+            conversations.push_back(Conversations(code, code_city, start, duration));
         }
         std::cout << "Удачно" << std::endl;
         menu(rates, cities, conversations, table_name);
@@ -310,6 +306,8 @@ int menu(std::vector<Rate>& rates, std::vector<Cities> &cities, std::vector<Conv
         break;
     }
     case 6:
+        for (int i = 0; i < conversations.size(); i++)
+            conversations[i].delete_member();
         return 0;
     default:
         menu(rates, cities, conversations, table_name);
