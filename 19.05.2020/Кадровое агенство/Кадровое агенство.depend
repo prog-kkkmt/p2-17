@@ -1,0 +1,26 @@
+# depslib dependency file v1.0
+1589884853 source:c:\prog\c++\Кадровое агенство\main.cpp
+	"Recruitment_agency.hpp"
+
+1589884593 source:c:\prog\c++\Кадровое агенство\computer_lvl.cpp
+	"Recruitment_agency.hpp"
+
+1589883659 c:\prog\c++\Кадровое агенство\recruitment_agency.hpp
+	<iostream>
+	<fstream>
+	<vector>
+	<locale>
+	<cstring>
+
+1589884402 source:c:\prog\c++\Кадровое агенство\form.cpp
+	"Recruitment_agency.hpp"
+
+1589883937 source:c:\prog\c++\Кадровое агенство\posts.cpp
+	"Recruitment_agency.hpp"
+
+1589884163 source:c:\prog\c++\Кадровое агенство\professions.cpp
+	"Recruitment_agency.hpp"
+
+1589884867 source:c:\prog\c++\Кадровое агенство\vacancy.cpp
+	"Recruitment_agency.hpp"
+

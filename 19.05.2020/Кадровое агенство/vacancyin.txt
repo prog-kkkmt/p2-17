@@ -1,0 +1,5 @@
+1 4 strooktor 15000 Norm 1 1 1
+2 7 writerr 20000 Good 2 2 2
+3 23 Reader 30000 Bad 3 3 3
+4 13 Roller 5000 Worth 4 4 4
+5 31 Folder 50000 Best 5 5 5
