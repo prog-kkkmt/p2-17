@@ -1,0 +1,5 @@
+1 Good
+2 Bad
+3 Best
+4 Worth
+5 Middle

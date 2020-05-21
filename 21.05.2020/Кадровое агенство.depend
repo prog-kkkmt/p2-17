@@ -1,0 +1,51 @@
+# depslib dependency file v1.0
+1589884853 source:c:\prog\c++\Кадровое агенство\main.cpp
+	"Recruitment_agency.hpp"
+
+1590050951 source:c:\prog\c++\Кадровое агенство\computer_lvl.cpp
+	"Recruitment_agency.hpp"
+
+1590051152 c:\prog\c++\Кадровое агенство\recruitment_agency.hpp
+	<iostream>
+	<fstream>
+	<vector>
+	<locale>
+	<cstring>
+
+1590050941 source:c:\prog\c++\Кадровое агенство\form.cpp
+	"Recruitment_agency.hpp"
+
+1590050809 source:c:\prog\c++\Кадровое агенство\posts.cpp
+	"Recruitment_agency.hpp"
+
+1590050913 source:c:\prog\c++\Кадровое агенство\professions.cpp
+	"Recruitment_agency.hpp"
+
+1590050975 source:c:\prog\c++\Кадровое агенство\vacancy.cpp
+	"Recruitment_agency.hpp"
+
+1590051644 source:c:\users\andre\onedrive\Рабочий стол\21.05.2020\computer_lvl.cpp
+	"Recruitment_agency.hpp"
+
+1590051152 c:\users\andre\onedrive\Рабочий стол\21.05.2020\recruitment_agency.hpp
+	<iostream>
+	<fstream>
+	<vector>
+	<locale>
+	<cstring>
+
+1590051555 source:c:\users\andre\onedrive\Рабочий стол\21.05.2020\form.cpp
+	"Recruitment_agency.hpp"
+
+1590051884 source:c:\users\andre\onedrive\Рабочий стол\21.05.2020\main.cpp
+	"Recruitment_agency.hpp"
+
+1590051466 source:c:\users\andre\onedrive\Рабочий стол\21.05.2020\posts.cpp
+	"Recruitment_agency.hpp"
+
+1590051465 source:c:\users\andre\onedrive\Рабочий стол\21.05.2020\professions.cpp
+	"Recruitment_agency.hpp"
+
+1590051724 source:c:\users\andre\onedrive\Рабочий стол\21.05.2020\vacancy.cpp
+	"Recruitment_agency.hpp"
+

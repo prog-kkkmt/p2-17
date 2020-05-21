@@ -1,0 +1,5 @@
+1 High
+2 Middle
+3 School
+4 High
+5 Looser
