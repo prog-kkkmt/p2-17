@@ -42,7 +42,12 @@ public:
     {
         std::ofstream out;
         out.open(name_file, std::ios::app);
-        out << code << " " << max_distance << " " << min_distance << " " << price << std::endl;
+        out << "<tr>\n";
+        out << "<td colspan=" << 2 << " align=" << "center" << ">" << code << "</td>\n";
+        out << "<td colspan=" << 2 << " align=" << "center" << ">" << max_distance << "</td>\n";
+        out << "<td colspan=" << 2 << " align=" << "center" << ">" << min_distance << "</td>\n";
+        out << "<td colspan=" << 2 << " align=" << "center" << ">" << price << "</td>\n";
+        out << "</tr>\n";
         out.close();
     }
 };
@@ -81,7 +86,11 @@ public:
     {
         std::ofstream out;
         out.open(name_file, std::ios::app);
-        out << code << " " << distance << " " << code_rate << std::endl;
+        out << "<tr>\n";
+        out << "<td colspan=" << 2 << " align=" << "center" << ">" << code << "</td>\n";
+        out << "<td colspan=" << 2 << " align=" << "center" << ">" << distance << "</td>\n";
+        out << "<td colspan=" << 2 << " align=" << "center" << ">" << code_rate << "</td>\n";
+        out << "</tr>\n";
         out.close();
     }
 };
@@ -125,7 +134,12 @@ public:
     {
         std::ofstream out;
         out.open(name_file, std::ios::app);
-        out << code << " " << code_city << " " << start << " " << duration << std::endl;
+        out << "<tr>\n";
+        out << "<td colspan=" << 2 << " align=" << "center" << ">" << code << "</td>\n";
+        out << "<td colspan=" << 2 << " align=" << "center" << ">" << code_city << "</td>\n";
+        out << "<td colspan=" << 2 << " align=" << "center" << ">" << start << "</td>\n";
+        out << "<td colspan=" << 2 << " align=" << "center" << ">" << duration << "</td>\n";
+        out << "</tr>\n";
         out.close();
     }
 
@@ -294,14 +308,38 @@ int menu(std::vector<Rate>& rates, std::vector<Cities> &cities, std::vector<Conv
     case 5:
     {
         if (table_name == "rates")
+        {
             for (int i = 0; i < rates.size(); i++)
-                rates[i].write_to_file("output_rate.txt");
+                rates[i].write_to_file("output_rate.html");
+            std::ofstream out;
+            out.open("output_rate.html", std::ios::app);
+            out << "</table>\n";
+            out << "</body>\n";
+            out << "</html>\n";
+            out.close();
+        }
         else if (table_name == "cities")
+        {
             for (int i = 0; i < cities.size(); i++)
-                cities[i].write_to_file("output_city.txt");
+                cities[i].write_to_file("output_city.html");
+            std::ofstream out;
+            out.open("output_city.html", std::ios::app);
+            out << "</table>\n";
+            out << "</body>\n";
+            out << "</html>\n";
+            out.close();
+        }
         else
+        {
             for (int i = 0; i < conversations.size(); i++)
-                conversations[i].write_to_file("output_conversation.txt");
+                conversations[i].write_to_file("output_conversation.html");
+            std::ofstream out;
+            out.open("output_conversation.html", std::ios::app);
+            out << "</table>\n";
+            out << "</body>\n";
+            out << "</html>\n";
+            out.close();
+        }
         menu(rates, cities, conversations, table_name);
         break;
     }
