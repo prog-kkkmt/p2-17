@@ -26,3 +26,24 @@ int power(int x, unsigned p) {
 #define MAX(x, y, r){int _x = (x); int _y = (y); if(_x > _y) r = _x; else r = _y;}
 
 4. https://stepik.org/lesson/13377/step/10?unit=3571
+Ответ:
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    int t;
+    int a;
+    int b;
+    cin>>t;
+    for(int i = 0; i < t; i++)
+    {
+        cin>>a;
+        cin>>b;
+        cout<<a + b<<endl;
+    }
+    return 0;
+}
+
+5. https://stepik.org/lesson/13377/step/11?unit=3571
+Ответ:
