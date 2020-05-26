@@ -72,3 +72,29 @@ int main()
 
 6. https://stepik.org/lesson/13377/step/12?unit=3571
 Ответ:
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+int main()
+{
+    bool check = true;
+    char c;
+    while(cin.get(c))
+    {
+        if(c != ' ')
+        {
+            cout<<c;
+            check = true;
+        }
+        else if(check)
+        {
+            cout<<c;
+            check = false;
+        }
+    }
+    return 0;
+}
+
+7. https://stepik.org/lesson/13377/step/13?unit=3571
+Ответ:
