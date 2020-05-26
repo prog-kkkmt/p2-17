@@ -98,3 +98,30 @@ int main()
 
 7. https://stepik.org/lesson/13377/step/13?unit=3571
 Ответ:
+#include <iostream>
+
+using namespace std;
+
+int log(int ai)
+{
+    int p = -1;
+    while(ai)
+    {
+        ai >>= 1; //побитовый сдвиг вправо
+        p++;
+    }
+    return p;
+}
+int main()
+{
+    int T;
+    cin>>T;
+    while(T != 0)
+    {
+        int ai;
+        cin>>ai;
+        cout<<log(ai)<<endl;
+        T -= 1;
+    }
+    return 0;
+}
