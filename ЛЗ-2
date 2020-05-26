@@ -47,3 +47,28 @@ int main()
 
 5. https://stepik.org/lesson/13377/step/11?unit=3571
 Ответ:
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+int main()
+{
+    int a, b, c;
+    cin>>a>>b>>c;
+    double x1, x2, D;
+    D = b * b - 4 * a * c;
+    if(D >= 0)
+    {
+        x1 = (-b + sqrt(D)) / (2 * a);
+        x2 = (-b - sqrt(D)) / (2 * a);
+        cout<<x1<<" "<<x2;
+    }
+    else
+    {
+        cout<<"No real roots.";
+    }
+    return 0;
+}
+
+6. https://stepik.org/lesson/13377/step/12?unit=3571
+Ответ:
