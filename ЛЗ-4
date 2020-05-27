@@ -1,0 +1,18 @@
+1. https://stepik.org/lesson/Указатели-и-массивы-539/step/9?unit=862
+Ответ:
+#include <algorithm>
+
+void rotate(int a[], unsigned size, int shift)
+{
+    int b[size];
+    for (int i = 0; i < size; i++)
+    {
+        b[i] = a[i];
+    }
+    for (int i = 0; i < size; i++)
+    {
+        a[i] = b[(i + shift) % (size)];       
+    }
+}
+
+2. 
