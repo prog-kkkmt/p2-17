@@ -1,0 +1,40 @@
+1. https://stepik.org/lesson/Стек-вызовов-538/step/8?unit=861
+Ответ:
+unsigned gcd(unsigned a, unsigned b)
+{
+    if(b == 0)
+    {
+        return a;
+    }
+    else
+    {
+        return gcd(b, a % b);
+    }
+}
+
+2. https://stepik.org/lesson/Стек-вызовов-538/step/9?unit=861
+Ответ: 9
+
+3. https://stepik.org/lesson/Стек-вызовов-538/step/10?unit=861
+Ответ:
+#include <iostream>
+
+using namespace std;
+
+void recurs()
+{
+    int n;
+    cin>>n;
+    if(n == 0)
+    {
+        return;
+    }
+    recurs();
+    cout<<n<<" ";
+}
+
+int main()
+{
+    recurs();
+    return 0;
+}
