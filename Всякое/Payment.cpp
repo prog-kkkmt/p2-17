@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include <iomanip>
+#include <fstream>
 #include <Windows.h>
 
 class Payment
@@ -35,47 +36,58 @@ public:
 		sum = heldSum = sumOnHand = experience = 0;
 	}
 
+	//Подсчёт стажа
 	void Experience() //not Golden
 	{
 		experience = 2020 - yearOfEmployment;
 	}
 
+	//Подсчёт начисленной суммы
 	void Sum()
 	{
 		sum = (salary * ((surcharge + 100) / 100)) / workingDaysInMonth * workedInMonth;
 	}
 
+	//Подчёт удержанной суммы
 	void HeldSum()
 	{
 		heldSum = sum - sumOnHand;
 	}
 
+	//Подсчёт выданной на руки суммы
 	void SumOnHand()
 	{
 		sumOnHand = sum * ndfl;
 	}
 
+	//Запись всех данных в файл
 	void get()
 	{
-		std::cout << "Работник: " << surname << " " << name << " " << midname << std::endl;
-		std::cout << std::fixed << std::setprecision(2) << "Стаж: " << experience;
+		std::ofstream file("output.txt");
+
+		file << "Работник: " << surname << " " << name << " " << midname << "\n";
+		file << "Стаж: " << experience;
 
 		if (experience > 10 && experience < 20)
-			std::cout << " лет." << std::endl;
+			file << " лет.\n";
 		else
 		{
 			int x = experience % 10;
 			if (x == 1)
-				std::cout << " год." << std::endl;
+				file << " год.\n";
 			if (x > 1 && x < 5)
-				std::cout << " года." << std::endl;
+				file << " года.\n";
 			if (x > 4 && x <= 9 || x == 0)
-				std::cout << " лет." << std::endl;
+				file << " лет.\n";
 		}
 
-		std::cout << std::fixed << std::setprecision(2) << "Начисленная сумма: " << sum << " рублей." << std::endl;
-		std::cout << std::fixed << std::setprecision(2) << "Сумма, выданная на руки: " << sumOnHand << " рублей." << std::endl;
-		std::cout << std::fixed << std::setprecision(2) << "Удержанная сумма: " << heldSum << " рублей." << std::endl;
+		file << std::fixed << std::setprecision(2) << "Начисленная сумма: " << sum << " рублей.\n";		
+		file << std::fixed << std::setprecision(2) << "Удержанная сумма: " << heldSum << " рублей.\n";
+		file << std::fixed << std::setprecision(2) << "Сумма, выданная на руки: " << sumOnHand << " рублей.\n";
+		
+		file.close();
+
+		std::cout << "Запись в файл завершена.\n";
 	}
 };
 
@@ -90,5 +102,6 @@ int main()
 	employee.SumOnHand();
 	employee.HeldSum();
 	employee.get();
+
 	return 0;
 }
