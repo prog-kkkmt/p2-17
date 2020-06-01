@@ -12,3 +12,11 @@ unsigned strlen(const char *str)
 
 2. https://stepik.org/lesson/Использование-указателей-540/step/7?unit=863
 Ответ:
+void strcat(char *to, const char *from)
+{
+    for(int i = 0; *to; to++);
+    while(*to++ = *from++);
+}
+
+3. https://stepik.org/lesson/Использование-указателей-540/step/8?unit=863
+Ответ:
