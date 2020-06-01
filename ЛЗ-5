@@ -1,0 +1,14 @@
+1. https://stepik.org/lesson/540/step/6?unit=863
+Ответ:
+unsigned strlen(const char *str)
+{
+    unsigned len = 0;
+    while(*str++)
+    {
+        len++;
+    }
+    return len;
+}
+
+2. https://stepik.org/lesson/Использование-указателей-540/step/7?unit=863
+Ответ:
