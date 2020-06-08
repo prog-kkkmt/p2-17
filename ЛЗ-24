@@ -1,0 +1,5 @@
+Sub begin()
+a = Cells(1, 1)
+P = 4 * a
+Cells(1, 2) = P
+End Sub
