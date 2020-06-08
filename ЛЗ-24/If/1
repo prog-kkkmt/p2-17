@@ -1,0 +1,6 @@
+Sub iff()
+a = Cells(1, 1)
+If a > 0 Then b = a - 8 Else
+b = a
+Cells(1, 2) = b
+End Sub
