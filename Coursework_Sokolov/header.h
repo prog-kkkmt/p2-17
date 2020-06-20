@@ -1,20 +1,20 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-struct box{
-	char * in_1, *in_2;//Множества 
-	int size_1, size_2;//Размер множеств
+struct container_sets{
+	char * Set_A, *Set_B;//Множества 
+	int size_A, size_B;//Размер множеств
 };
 
-struct data_array{
-	char *out;//Множество
-	int size_out;//Размер множества
+struct container_resulting_set{
+	char *resulting_set;//Множество
+	int resulting_set_size;//Размер множества
 };
-struct box get_array();//Получение множеств от пользвателя 
-void show(struct data_array data);//Отображение результата 
-struct data_array addition(struct box in);//Объединение множеств 
-struct data_array disjunction(struct box in);//Пересечение множеств 
-bool equality(struct box in);//Проверка на равенство множеств
-struct data_array difference(struct box in);//Разность множеств 
-struct data_array symmetrical_difference(struct box in);//Симметричная разность множеств
-bool subset(struct box in);// Проверка является множество 'B' подмножеством 'A'
+struct container_sets get_array();//Получение множеств от пользвателя 
+void show(struct container_resulting_set data);//Отображение результата 
+struct container_resulting_set addition(struct container_sets in);//Объединение множеств 
+struct container_resulting_set disjunction(struct container_sets in);//Пересечение множеств 
+bool equality(struct container_sets in);//Проверка на равенство множеств
+struct container_resulting_set difference(struct container_sets in);//Разность множеств 
+struct container_resulting_set symmetrical_difference(struct container_sets in);//Симметричная разность множеств
+bool subset(struct container_sets in);// Проверка является множество 'B' подмножеством 'A'

@@ -8,7 +8,7 @@
 int main(int argc, char** argv) {
 	int action = 0, p = 0;
 
-	struct box in = get_array();//Получение множеств от пользвателя 
+	struct container_sets in = get_array();//Получение множеств от пользвателя 
 		
 	while (p != 1){
 		
@@ -27,7 +27,7 @@ int main(int argc, char** argv) {
 			break;
 			
 		case 3:
-			printf("%d",equality(in));//Проверка на равенство множеств
+			printf("\n%d\n",equality(in));//Проверка на равенство множеств
 			break;
 		
 		case 4:
@@ -39,7 +39,7 @@ int main(int argc, char** argv) {
 			break;
 			
 		case 6: 
-			printf("%d",subset(in));// Проверка является множество 'B' подмножеством 'A'
+			printf("\n%d\n",subset(in));// Проверка является множество 'B' подмножеством 'A'
 			break;
 		
 		case 7:
