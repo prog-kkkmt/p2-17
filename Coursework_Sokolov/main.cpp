@@ -1,3 +1,6 @@
+/*
+Входные данные строка с однасимвальными членами множества без дубликатов  через пробел
+*/
 #include <stdlib.h>
 #include <stdio.h>
 #include "header.h"
@@ -16,27 +19,27 @@ int main(int argc, char** argv) {
 	
 	switch(action){	// Выбор действия с множествами 
 		case 1:
-			addition(in);// Объединение множеств 
+			show(addition(in));// Объединение множеств 
 			break;
 		
 		case 2:
-			disjunction(in);//Пересечение множеств 
+			show(disjunction(in));//Пересечение множеств 
 			break;
 			
 		case 3:
-			equality(in);//Проверка на равенство множеств
+			printf("%d",equality(in));//Проверка на равенство множеств
 			break;
 		
 		case 4:
-			difference(in);//Разность множеств 
+			show(difference(in));//Разность множеств 
 			break;
 			
 		case 5:
-			symmetrical_difference(in);//Симетричная разность множеств
+			show(symmetrical_difference(in));//Симетричная разность множеств
 			break;
 			
 		case 6: 
-			subset(in);// Проверка является множество 'B' подмножеством 'A'
+			printf("%d",subset(in));// Проверка является множество 'B' подмножеством 'A'
 			break;
 		
 		case 7:

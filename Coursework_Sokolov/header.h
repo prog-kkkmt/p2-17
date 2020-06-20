@@ -6,11 +6,15 @@ struct box{
 	int size_1, size_2;//Размер множеств
 };
 
+struct data_array{
+	char *out;//Множество
+	int size_out;//Размер множества
+};
 struct box get_array();//Получение множеств от пользвателя 
-void show(char *out,int n);//Отображение результата 
-void addition(struct box in);//Объединение множеств 
-void disjunction(struct box in);//Пересечение множеств 
-void equality(struct box in);//Проверка на равенство множеств
-void difference(struct box in);//Разность множеств 
-void symmetrical_difference(struct box in);//Симметричная разность множеств
-void subset(struct box in);// Проверка является множество 'B' подмножеством 'A'
+void show(struct data_array data);//Отображение результата 
+struct data_array addition(struct box in);//Объединение множеств 
+struct data_array disjunction(struct box in);//Пересечение множеств 
+bool equality(struct box in);//Проверка на равенство множеств
+struct data_array difference(struct box in);//Разность множеств 
+struct data_array symmetrical_difference(struct box in);//Симметричная разность множеств
+bool subset(struct box in);// Проверка является множество 'B' подмножеством 'A'
