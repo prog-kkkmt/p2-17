@@ -8,8 +8,10 @@
 int main(int argc, char** argv) {
 	int action = 0, p = 0;
 
-	struct container_sets in = get_array();//Получение множеств от пользвателя 
-		
+	struct set Set_A = get_array();//Получение множеств от пользвателя 
+	
+	struct set Set_B = get_array();//Получение множеств от пользвателя 
+	
 	while (p != 1){
 		
 	printf("\n Action: 7 - info");
@@ -19,27 +21,27 @@ int main(int argc, char** argv) {
 	
 	switch(action){	// Выбор действия с множествами 
 		case 1:
-			show(addition(in));// Объединение множеств 
+			show(addition(Set_A,Set_B));// Объединение множеств 
 			break;
 		
 		case 2:
-			show(disjunction(in));//Пересечение множеств 
+			show(disjunction(Set_A,Set_B));//Пересечение множеств 
 			break;
 			
 		case 3:
-			printf("\n%d\n",equality(in));//Проверка на равенство множеств
+			printf("\n%d\n",equality(Set_A,Set_B));//Проверка на равенство множеств
 			break;
 		
 		case 4:
-			show(difference(in));//Разность множеств 
+			show(difference(Set_A,Set_B));//Разность множеств 
 			break;
 			
 		case 5:
-			show(symmetrical_difference(in));//Симетричная разность множеств
+			show(symmetrical_difference(Set_A,Set_B));//Симетричная разность множеств
 			break;
 			
 		case 6: 
-			printf("\n%d\n",subset(in));// Проверка является множество 'B' подмножеством 'A'
+			printf("\n%d\n",subset(Set_A,Set_B));// Проверка является множество 'B' подмножеством 'A'
 			break;
 		
 		case 7:

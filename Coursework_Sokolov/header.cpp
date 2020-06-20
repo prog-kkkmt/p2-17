@@ -6,237 +6,222 @@
 
 #define in_size 256
 
-struct container_sets get_array(){//Получение множеств от пользвателя 
-	char str_1[in_size],str_2[in_size];
-	char *token_s1, *token_s2, *last_s1, *last_s2;
+struct set get_array(){//Получение множеств от пользвателя 
+	char str[in_size];
+	char *token, *last;
 	
-	struct container_sets in;
-	in.size_A = 0;
-	in.size_B = 0;
+	struct set data;
+	data.size = 0;
 	
-	printf("Enter sets");
- 	printf("\n Set A =");
+	printf("Enter set");
+ 	printf("\n Set =");
  	
-	gets(str_1);//Получаем строку 
+	gets(str);//Получаем строку 
 	
-	in.Set_A = (char*)malloc(strlen(str_1) * sizeof(int));//Выделяем место под моссив
+	data.set = (char*)malloc(strlen(str) * sizeof(int));//Выделяем место под моссив
 	
-	token_s1 = strtok_r(str_1, " ", &last_s1);
+	token = strtok_r(str, " ", &last);
 	
-	while(token_s1 != NULL)//Записываем строку в массив 
+	while(token != NULL)//Записываем строку в массив 
 	{
-	in.Set_A[in.size_A] = *token_s1;
-	token_s1 = strtok_r(NULL, " ", &last_s1);
-	in.size_A++;
-	
+	data.set[data.size] = *token;
+	token = strtok_r(NULL, " ", &last);
+	data.size++;
 	}
 	
-	printf("\n Set B="); 
-	gets(str_2);//Получаем строку 
-	
-	in.Set_B = (char*)malloc(strlen(str_2) * sizeof(int));//Выделяем место под моссив
-	
-	token_s2 = strtok_r(str_2, " ", &last_s2);
-	
-	while(token_s2 != NULL)//Записываем строку в массив
-	{
-	in.Set_B[in.size_B] = *token_s2;
-	token_s2 = strtok_r(NULL, " ", &last_s2);
-	in.size_B++;
-	}
-	return in;
+	return data;
 	
 }
 
-struct container_resulting_set addition(struct container_sets in){// Объединение множеств
+struct set addition(struct set Set_A, struct set Set_B){// Объединение множеств
 	char *work;
 	int k = 0;
-	struct container_resulting_set data;
-	data.resulting_set_size=in.size_A;
+	struct set data;
+	data.size=Set_A.size;
 	
-	for (int i = 0; i < in.size_B; i++){//Вычисляем размер итогово моссива 
-		for(int j = 0; j < in.size_A; j++){
-			if (in.Set_A[j] != in.Set_B[i]) k++;
+	for (int i = 0; i < Set_B.size; i++){//Вычисляем размер итогово моссива 
+		for(int j = 0; j < Set_A.size; j++){
+			if (Set_A.set[j] != Set_B.set[i]) k++;
 		} 
-		if (k == in.size_A){
-		data.resulting_set_size++;
+		if (k == Set_A.size){
+		data.size++;
 		}
 		k=0; 
 	}
 	
-	data.resulting_set = (char*)malloc(data.resulting_set_size * sizeof(int));//Выделяем место под моссив
-	k = 0; data.resulting_set_size = in.size_A;
+	data.set = (char*)malloc(data.size * sizeof(int));//Выделяем место под моссив
+	k = 0; data.size = Set_A.size;
 	
-	for (int i = 0; i < in.size_A; i++) data.resulting_set[i]=in.Set_A[i];//Заполняем моссив первым множеством 
+	for (int i = 0; i < Set_A.size; i++) data.set[i]=Set_A.set[i];//Заполняем моссив первым множеством 
 	
-	for (int i = 0; i < in.size_B; i++)//Заполняем моссив вторым множеством 
+	for (int i = 0; i < Set_B.size; i++)//Заполняем моссив вторым множеством 
 	{
-		for(int j = 0; j < in.size_A; j++)
+		for(int j = 0; j < Set_A.size; j++)
 		{
-			if (in.Set_A[j] != in.Set_B[i]) k++;
+			if (Set_A.set[j] != Set_B.set[i]) k++;
 		} 
-		if (k == in.size_A)
+		if (k == Set_A.size)
 		{
-			data.resulting_set[data.resulting_set_size]=in.Set_B[i];
-			data.resulting_set_size++;
+			data.set[data.size]=Set_B.set[i];
+			data.size++;
 		}
 		k=0; 
 	}
 	return data; //Возвращаем результат 
-	free(data.resulting_set);//Очищаем память
+	free(data.set);//Очищаем память
 }
 
-struct container_resulting_set disjunction(struct container_sets in){//Пересечение множеств 
+struct set disjunction(struct set Set_A, struct set Set_B){//Пересечение множеств 
 	char *work;
-	struct container_resulting_set data;
-	data.resulting_set_size = 0;
+	struct set data;
+	data.size = 0;
 	
-	for (int i = 0; i < in.size_B; i++){//Вычисляем размер итогово моссива 
-		for(int j = 0; j < in.size_A; j++){
-			if (in.Set_A[j] == in.Set_B[i]) data.resulting_set_size++;
+	for (int i = 0; i < Set_B.size; i++){//Вычисляем размер итогово моссива 
+		for(int j = 0; j < Set_A.size; j++){
+			if (Set_A.set[j] == Set_B.set[i]) data.size++;
 		} 
 	}
 	
-	data.resulting_set = (char*)malloc(data.resulting_set_size * sizeof(int));//Выделяем место под моссив
-	data.resulting_set_size = 0;
+	data.set = (char*)malloc(data.size * sizeof(int));//Выделяем место под моссив
+	data.size = 0;
 	
-	for (int i = 0; i < in.size_A; i++) data.resulting_set[i]=in.Set_A[i];//Заполняем моссив первым множеством 
+	for (int i = 0; i < Set_A.size; i++) data.set[i]=Set_A.set[i];//Заполняем моссив первым множеством 
 	
-	for (int i = 0; i < in.size_B; i++)//Заполняем моссив вторым множеством 
+	for (int i = 0; i < Set_B.size; i++)//Заполняем моссив вторым множеством 
 	{
-		for(int j = 0; j < in.size_A; j++)
+		for(int j = 0; j < Set_A.size; j++)
 		{
-			if (in.Set_A[j] == in.Set_B[i])
+			if (Set_A.set[j] == Set_B.set[i])
 			{
-			data.resulting_set[data.resulting_set_size]=in.Set_B[i];
-			data.resulting_set_size++;
+			data.set[data.size]=Set_B.set[i];
+			data.size++;
 			}
 		} 
 	}
 	return data; //Возвращаем результат 
-	free(data.resulting_set);//Очищаем память
+	free(data.set);//Очищаем память
 }
 
-bool equality(struct container_sets in){//Проверка на равенство множеств
+bool equality(struct set Set_A, struct set Set_B){//Проверка на равенство множеств
 	int k = 0;
-		for (int i = 0; i < in.size_B; i++){//Проверям на равенство по элементно
-			for(int j = 0; j < in.size_A; j++){
-				if (in.Set_A[j] == in.Set_B[i]) k++;
+		for (int i = 0; i < Set_B.size; i++){//Проверям на равенство по элементно
+			for(int j = 0; j < Set_A.size; j++){
+				if (Set_A.set[j] == Set_B.set[i]) k++;
 			} 
 		}
-	if (k = in.size_B && in.size_A == in.size_B) return true;
+	if (k = Set_B.size && Set_A.size == Set_B.size) return true;
 	else return false;
 }
 
-struct container_resulting_set difference(struct container_sets in){//Разность множеств 
+struct set difference(struct set Set_A, struct set Set_B){//Разность множеств 
 	char *work;
 	int k = 0 ;
-	struct container_resulting_set data;
-	data.resulting_set_size = 0;
+	struct set data;
+	data.size = 0;
 	
 	
-	for (int i = 0; i < in.size_A; i++){//Вычисляем размер итогово моссива 
-		for(int j = 0; j < in.size_B; j++){
-			if (in.Set_A[i] != in.Set_B[j]) k++;
+	for (int i = 0; i < Set_A.size; i++){//Вычисляем размер итогово моссива 
+		for(int j = 0; j < Set_B.size; j++){
+			if (Set_A.set[i] != Set_B.set[j]) k++;
 		} 
-		if (k == in.size_B) data.resulting_set_size++;
+		if (k == Set_B.size) data.size++;
 		k=0;
 	}
 	
-	data.resulting_set = (char*)malloc(data.resulting_set_size * sizeof(int));//Выделяем место под моссив
-	data.resulting_set_size = 0; k = 0;
+	data.set = (char*)malloc(data.size * sizeof(int));//Выделяем место под моссив
+	data.size = 0; k = 0;
 	
 	
-	for (int i = 0; i < in.size_A; i++)//Заполняем моссив
+	for (int i = 0; i < Set_A.size; i++)//Заполняем моссив
 	{
-		for(int j = 0; j < in.size_B; j++)
+		for(int j = 0; j < Set_B.size; j++)
 		{
-			if (in.Set_A[i] != in.Set_B[j]) k++;
+			if (Set_A.set[i] != Set_B.set[j]) k++;
 		}
-		if(k == in.size_B){
-			data.resulting_set[data.resulting_set_size]=in.Set_A[i];
-			data.resulting_set_size++;
+		if(k == Set_B.size){
+			data.set[data.size]=Set_A.set[i];
+			data.size++;
 		}
 		k = 0; 
 	}
 	return data; //Возвращаем результат 
-	free(data.resulting_set);//Очищаем память
+	free(data.set);//Очищаем память
 }
 
-struct container_resulting_set symmetrical_difference(struct container_sets in){//Симетричная разность множеств
+struct set symmetrical_difference(struct set Set_A, struct set Set_B){//Симетричная разность множеств
 	char *work;
 	int k = 0 ;
-		struct container_resulting_set data;
-	data.resulting_set_size = 0;
+		struct set data;
+	data.size = 0;
 	
-	for (int i = 0; i < in.size_A; i++){//Вычисляем размер итогово моссива ч.1
-		for(int j = 0; j < in.size_B; j++){
-			if (in.Set_A[i] != in.Set_B[j]) k++;
+	for (int i = 0; i < Set_A.size; i++){//Вычисляем размер итогово моссива ч.1
+		for(int j = 0; j < Set_B.size; j++){
+			if (Set_A.set[i] != Set_B.set[j]) k++;
 		} 
-		if (k == in.size_B) data.resulting_set_size++;
+		if (k == Set_B.size) data.size++;
 		k=0;
 	}
 	
-	for (int i = 0; i < in.size_B; i++){//Вычисляем размер итогово моссива ч.2
-		for(int j = 0; j < in.size_A; j++){
-			if (in.Set_A[j] != in.Set_B[i]) k++;
+	for (int i = 0; i < Set_B.size; i++){//Вычисляем размер итогово моссива ч.2
+		for(int j = 0; j < Set_A.size; j++){
+			if (Set_A.set[j] != Set_B.set[i]) k++;
 		} 
-		if (k == in.size_A) data.resulting_set_size++;
+		if (k == Set_A.size) data.size++;
 		k=0;
 	}
 	
-	data.resulting_set = (char*)malloc(data.resulting_set_size * sizeof(int));
-	data.resulting_set_size = 0; k = 0;
+	data.set = (char*)malloc(data.size * sizeof(int));
+	data.size = 0; k = 0;
 	
 	
-	for (int i = 0; i < in.size_A; i++)//Заполняем моссив первым множеством 
+	for (int i = 0; i < Set_A.size; i++)//Заполняем моссив первым множеством 
 	{
-		for(int j = 0; j < in.size_B; j++)
+		for(int j = 0; j < Set_B.size; j++)
 		{
-			if (in.Set_A[i] != in.Set_B[j]) k++;
+			if (Set_A.set[i] != Set_B.set[j]) k++;
 		}
-		if(k == in.size_B){
-			data.resulting_set[data.resulting_set_size]=in.Set_A[i];
-			data.resulting_set_size++;
+		if(k == Set_B.size){
+			data.set[data.size]=Set_A.set[i];
+			data.size++;
 		}
 		k = 0; 
 	}
 
-	for (int i = 0; i < in.size_B; i++)//Заполняем моссив вторым множеством 
+	for (int i = 0; i < Set_B.size; i++)//Заполняем моссив вторым множеством 
 	{
-		for(int j = 0; j < in.size_A; j++)
+		for(int j = 0; j < Set_A.size; j++)
 		{
-			if (in.Set_B[i] != in.Set_A[j]) k++;
+			if (Set_B.set[i] != Set_A.set[j]) k++;
 		}
-		if(k == in.size_A){
-			data.resulting_set[data.resulting_set_size]=in.Set_B[i];
-			data.resulting_set_size++;
+		if(k == Set_A.size){
+			data.set[data.size]=Set_B.set[i];
+			data.size++;
 		}
 		k = 0; 
 	}
 	return data; //Возвращаем результат 
-	free(data.resulting_set);//Очищаем память
+	free(data.set);//Очищаем память
 }
 
-bool subset(struct container_sets in){// Проверка является множество 'B' подмножеством 'A'
+bool subset(struct set Set_A, struct set Set_B){// Проверка является множество 'B' подмножеством 'A'
 	int k = 0;
 	
-	for (int i = 0; i < in.size_A ; i++)//Поэлементно сравниваем множества 
-		for(int j = 0; j < in.size_B ; j++){
-			if(in.Set_A[i] == in.Set_B[j]) k++;
+	for (int i = 0; i < Set_A.size ; i++)//Поэлементно сравниваем множества 
+		for(int j = 0; j < Set_B.size ; j++){
+			if(Set_A.set[i] == Set_B.set[j]) k++;
 		}
-	if(k == in.size_B) return true;
+	if(k == Set_B.size) return true;
 	else return false;
 }
 
-void show(struct container_resulting_set data){//Отображение результата 
-	printf("\n Set_resulting_set =");
-	if (data.resulting_set_size > 0){
-	for(int i = 0; i<data.resulting_set_size; i++){
-    printf("%c ", data.resulting_set[i]);
+void show(struct set data){//Отображение результата 
+	printf("\n Set_set =");
+	if (data.size > 0){
+	for(int i = 0; i<data.size; i++){
+    printf("%c ", data.set[i]);
 	}
 	printf("\n");
 	}
 	else printf("Emptu\n");
-	free(data.resulting_set);//Очищаем память
+	free(data.set);//Очищаем память
 }
