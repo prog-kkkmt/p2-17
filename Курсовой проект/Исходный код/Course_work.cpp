@@ -6,6 +6,7 @@
 
 int main()
 {
+	//Изменение кодировки проекта на Windows 1251
 	system("chcp 1251");
 	system("cls");
 	std::cout << "Выберите метод шифрования:" << std::endl;
@@ -14,8 +15,10 @@ int main()
 	std::cout << "3. Выход из программы." << std::endl;
 	std::cout << "Ответ: ";
 
+	//Авторская переменная
 	Sipher mloborev;
 	
+	//Выбор метода шифрования
 	int choice;
 	std::cin >> choice;
 	switch (choice)
