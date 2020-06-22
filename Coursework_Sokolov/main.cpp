@@ -45,7 +45,8 @@ int main(int argc, char** argv) {
 			break;
 		
 		case 7:
-			printf("\n1 - Unionem of sets; 2 - Intersectio of sets; 3 - Checking the equality of sets;\n4 - Difference of sets; 5 - Symmetric difference of sets; 6 - Check if the set 'B' is a subset of 'A';\n8 - exit.\n");
+			printf("\n1 - Unionem of sets; 2 - Intersectio of sets; 3 - Checking the equality of sets;");
+			printf("\n4 - Difference of sets; 5 - Symmetric difference of sets; 6 - Check if the set 'B' is a subset of 'A';\n8 - exit.\n");
 			break;
 		
 		default : p = 1; return 0;
