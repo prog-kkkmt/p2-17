@@ -1,5 +1,0 @@
-﻿  banks.cpp
-C:\Users\Леонид\source\repos\banks\banks\banks.cpp(75,23): warning C4018: <: несоответствие типов со знаком и без знака
-C:\Users\Леонид\source\repos\banks\banks\banks.cpp(85,23): warning C4018: <: несоответствие типов со знаком и без знака
-C:\Users\Леонид\source\repos\banks\banks\banks.cpp(117,17): warning C4018: <=: несоответствие типов со знаком и без знака
-  banks.vcxproj -> C:\Users\Леонид\source\repos\banks\Debug\banks.exe
