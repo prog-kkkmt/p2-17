@@ -17,13 +17,13 @@ public:
 
 		if (message.size() == 0)
 		{
-			std::cout << "Íå îáíàğóæåíà ñòğîêà â ôàéëå Unencrypted_message.txt\n\n";
+			std::cout << "ĞĞµ Ğ¾Ğ±Ğ½Ğ°Ñ€ÑƒĞ¶ĞµĞ½Ğ° ÑÑ‚Ñ€Ğ¾ĞºĞ° Ğ² Ñ„Ğ°Ğ¹Ğ»Ğµ Unencrypted_message.txt\n\n";
 			system("pause");
 			exit(0);
 		}
 
 	wrongKey:
-		std::cout << "Ââåäèòå êëş÷ øèôğà îò 1 äî 5: ";
+		std::cout << "Ğ’Ğ²ĞµĞ´Ğ¸Ñ‚Ğµ ĞºĞ»ÑÑ‡ ÑˆĞ¸Ñ„Ñ€Ğ° Ğ¾Ñ‚ 1 Ğ´Ğ¾ 5: ";
 		std::cin >> key;
 		if (key >= 1 && key <= 5)
 		{
@@ -52,7 +52,7 @@ public:
 		}
 		else
 		{
-			std::cout << "Íåâåğíûé êëş÷. Çíà÷åíèå íå äîëæíî âûõîäèòü çà çàäàííûå ğàìêè.\n";
+			std::cout << "ĞĞµĞ²ĞµÑ€Ğ½Ñ‹Ğ¹ ĞºĞ»ÑÑ‡. Ğ—Ğ½Ğ°Ñ‡ĞµĞ½Ğ¸Ğµ Ğ½Ğµ Ğ´Ğ¾Ğ»Ğ¶Ğ½Ğ¾ Ğ²Ñ‹Ñ…Ğ¾Ğ´Ğ¸Ñ‚ÑŒ Ğ·Ğ° Ğ·Ğ°Ğ´Ğ°Ğ½Ğ½Ñ‹Ğµ Ñ€Ğ°Ğ¼ĞºĞ¸..\n";
 			system("pause");
 			system("cls");
 			std::cin.clear();
@@ -61,7 +61,7 @@ public:
 		}
 
 		system("cls");
-		std::cout << "Ñîîáùåíèå çàøèôğîâàíî â ôàéë Encrypted_message.txt\n";
+		std::cout << "Ğ¡Ğ¾Ğ¾Ğ±Ñ‰ĞµĞ½Ğ¸Ğµ Ğ·Ğ°ÑˆĞ¸Ñ„Ñ€Ğ¾Ğ²Ğ°Ğ½Ğ¾ Ğ² Ñ„Ğ°Ğ¹Ğ» Encrypted_message.txt\n";
 
 		std::ofstream fileout("Encrypted_message.txt");
 		fileout << message;
@@ -80,13 +80,13 @@ public:
 
 		if (message.size() == 0)
 		{
-			std::cout << "Íå îáíàğóæåíà ñòğîêà â ôàéëå Unencrypted_message.txt\n\n";
+			std::cout << "ĞĞµ Ğ¾Ğ±Ğ½Ğ°Ñ€ÑƒĞ¶ĞµĞ½Ğ° ÑÑ‚Ñ€Ğ¾ĞºĞ° Ğ² Ñ„Ğ°Ğ¹Ğ»Ğµ Unencrypted_message.txt\n\n";
 			system("pause");
 			exit(0);
 		}
 
 		std::ofstream fileout("Encrypted_message.txt");
-		std::cout << "Ñîîáùåíèå çàøèôğîâàíî â ôàéë Encrypted_message.txt\n";
+		std::cout << "Ğ¡Ğ¾Ğ¾Ğ±Ñ‰ĞµĞ½Ğ¸Ğµ Ğ·Ğ°ÑˆĞ¸Ñ„Ñ€Ğ¾Ğ²Ğ°Ğ½Ğ¾ Ğ² Ñ„Ğ°Ğ¹Ğ» Encrypted_message.txt\n";
 
 		for (int i = 0; message[i] != '\0'; ++i)
 		{
