@@ -11,10 +11,12 @@ public:
 		char ch;
 		int key;
 
+		//Запись строки из файла
 		std::ifstream filein("Unencrypted_message.txt");
 		std::getline(filein, message);
 		filein.close();
 
+		//Проверка на наличие строки в файле
 		if (message.size() == 0)
 		{
 			std::cout << "Не обнаружена строка в файле Unencrypted_message.txt\n\n";
@@ -30,6 +32,8 @@ public:
 			for (int i = 0; message[i] != '\0'; ++i)
 			{
 				ch = message[i];
+				
+				//Посимвольное шифрование строки для строчных букв
 				if (ch >= 'a' && ch <= 'z')
 				{
 					ch = ch + key;
@@ -39,6 +43,8 @@ public:
 					}
 					message[i] = ch;
 				}
+				
+				//И для заглавных букв
 				else if (ch >= 'A' && ch <= 'Z')
 				{
 					ch = ch + key;
@@ -50,11 +56,15 @@ public:
 				}
 			}
 		}
+		
+		//Проверка на ввод верного символа
 		else
 		{
 			std::cout << "Неверный ключ. Значение не должно выходить за заданные рамки..\n";
 			system("pause");
 			system("cls");
+			
+			//Очистка буфера
 			std::cin.clear();
 			std::cin.ignore(32767, '\n');
 			goto wrongKey;
@@ -63,6 +73,7 @@ public:
 		system("cls");
 		std::cout << "Сообщение зашифровано в файл Encrypted_message.txt\n";
 
+		//Запись зашифрованной строки в файл
 		std::ofstream fileout("Encrypted_message.txt");
 		fileout << message;
 	}
@@ -74,10 +85,12 @@ public:
 		std::string message;
 		char ch;
 
+		//Запись строки из файла
 		std::ifstream filein("Unencrypted_message.txt");
 		std::getline(filein, message);
 		filein.close();
 
+		//Проверка на наличие строки в файле
 		if (message.size() == 0)
 		{
 			std::cout << "Не обнаружена строка в файле Unencrypted_message.txt\n\n";
@@ -92,6 +105,7 @@ public:
 		{
 			ch = message[i];
 
+			//Посимвольная шифровка сообщения для строчных букв
 			if (ch >= 'a' && ch <= 'z')
 			{
 				switch (ch)
@@ -150,6 +164,8 @@ public:
 					fileout << "--.. ";  break;
 				}
 			}
+			
+			//Для заглавных букв
 			else if (ch >= 'A' && ch <= 'Z')
 			{
 				switch (ch)
@@ -208,6 +224,8 @@ public:
 					fileout << "--.. ";  break;
 				}
 			}
+			
+			//Для цифр
 			else if (ch >= '0' && ch <= '9')
 			{
 				switch (ch)
@@ -234,6 +252,8 @@ public:
 					fileout << "----- "; break;
 				}
 			}
+			
+			//Для пробела
 			else if (ch == ' ')
 				fileout << "   ";
 		}
