@@ -49,12 +49,12 @@ struct set addition(struct set Set_A, struct set Set_B){// Объединение множеств
 		k=0; 
 	}
 	
-	data.set = (char*)malloc(data.size * sizeof(int));//Выделяем место под моссив
+	data.set = (char*)malloc(data.size * sizeof(int));//Выделяем место под массив
 	k = 0; data.size = Set_A.size;
 	
-	for (int i = 0; i < Set_A.size; i++) data.set[i]=Set_A.set[i];//Заполняем моссив первым множеством 
+	for (int i = 0; i < Set_A.size; i++) data.set[i]=Set_A.set[i];//Заполняем массив первым множеством 
 	
-	for (int i = 0; i < Set_B.size; i++)//Заполняем моссив вторым множеством 
+	for (int i = 0; i < Set_B.size; i++)//Заполняем массив вторым множеством 
 	{
 		for(int j = 0; j < Set_A.size; j++)
 		{
@@ -215,13 +215,13 @@ bool subset(struct set Set_A, struct set Set_B){// Проверка является множество '
 }
 
 void show(struct set data){//Отображение результата 
-	printf("\n Set_set =");
+	printf("\n Set_out =");
 	if (data.size > 0){
 	for(int i = 0; i<data.size; i++){
     printf("%c ", data.set[i]);
 	}
 	printf("\n");
 	}
-	else printf("Emptu\n");
+	else printf("Empty\n");
 	free(data.set);//Очищаем память
 }

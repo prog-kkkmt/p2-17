@@ -4,13 +4,16 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include "header.h"
+#include<windows.h>
 
 int main(int argc, char** argv) {
 	int action = 0, p = 0;
-
-	struct set Set_A = get_array();//Получение множеств от пользвателя 
 	
-	struct set Set_B = get_array();//Получение множеств от пользвателя 
+	system("color F0");
+	
+	struct set Set_A = get_array();//Получение множеств от пользователя  
+	
+	struct set Set_B = get_array();//Получение множеств от пользователя  
 	
 	while (p != 1){
 		
