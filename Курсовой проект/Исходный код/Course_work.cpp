@@ -1,8 +1,8 @@
-﻿#include <iostream>
+#include <iostream>
 #include <fstream>
 #include <string>
 #include <Windows.h>
-#include "Sipher.h"
+#include "Cipher.h"
 
 int main()
 {
@@ -16,7 +16,7 @@ int main()
 	std::cout << "Ответ: ";
 
 	//Авторская переменная
-	Sipher mloborev;
+	Cipher mloborev;
 	
 	//Выбор метода шифрования
 	int choice;
