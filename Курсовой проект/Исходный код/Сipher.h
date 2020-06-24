@@ -1,6 +1,6 @@
 #pragma once
 
-class Sipher
+class Сipher
 {
 public:
 	void CaesarEncryption()
