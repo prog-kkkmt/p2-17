@@ -1,0 +1,13 @@
+# depslib dependency file v1.0
+1593191322 source:c:\users\Леонид\documents\c++\string\main.cpp
+	"string.cpp"
+
+1593117937 c:\users\Леонид\documents\c++\string\string.h
+	<iostream>
+	<cstring>
+
+1593117827 c:\users\Леонид\documents\c++\string\string.cpp
+	"string.h"
+	<iostream>
+	<cstring>
+
