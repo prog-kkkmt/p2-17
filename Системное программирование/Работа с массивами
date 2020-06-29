@@ -1,0 +1,181 @@
+1. https://stepik.org/lesson/64560/step/2?unit=41410
+Ответ:
+#include <stdio.h>
+
+int main()
+{
+    int n,i;
+    scanf("%d",&n);
+    int mass[n];
+    for(i=0; i<n; i++)
+    {
+        scanf("%d",&mass[i]);
+    }
+    for(i=n-1; i>=0; i--)
+    {
+        printf("%d ",mass[i]);
+    }
+    return 0;
+}
+
+2. https://stepik.org/lesson/64560/step/3?unit=41410
+Ответ:
+#include <stdio.h>
+
+int main()
+{
+    int n, i, sch = 0, b;
+    scanf("%d",&n);
+    int mass[n];
+    for(i=0; i<n; i++)
+    {
+        scanf("%d",&mass[i]);
+    }
+    b = n-1;
+    for(i=0; i<n; i++)
+    {
+        if(mass[i] == mass[b])
+        {
+            b--;
+            sch += 100;
+        }
+        else
+        {
+            sch += -10000;
+        }
+    }
+    if(sch > 0)
+    {
+        printf("YES");
+    }
+    else
+    {
+        printf("NO");
+    }
+    return 0;
+}
+
+3. https://stepik.org/lesson/64560/step/4?unit=41410
+Ответ:
+#include <stdio.h>
+
+int main()
+{
+    int n, i;
+    scanf("%d",&n);
+    int arr[n];
+    for(i = 0; i < n; i++)
+    {
+        scanf("%d",&arr[i]);
+    }
+    for(i = 0; i < n; i++)
+    {
+        if(arr[i] % 2 == 0)
+        {
+            printf("%d ",arr[i]);
+        }
+    }
+    for(i = 0; i < n; i++)
+    {
+        if(!(arr[i] % 2 == 0))
+        {
+            printf("%d ",arr[i]);
+        }
+    }
+    return 0;
+}
+
+4. https://stepik.org/lesson/64657/step/2?unit=41549
+Ответ:
+#include <stdio.h>
+
+int main()
+{
+    int stroka, stolb, i, j;
+    scanf("%d%d",&stroka,&stolb);
+    int arr[stroka][stolb];
+    for(i = 0; i < stroka; i++)
+    {
+        for(j = 0; j < stolb; j++)
+        {
+            scanf("%d",&arr[i][j]);
+        }
+    }
+    for(i = 0; i < stroka; i++)
+    {
+        for(j = 0; j < stolb; j++)
+        {
+            printf("%d ",arr[i][j]);
+        }
+        printf("\n");
+    }
+    return 0;
+}
+
+5. https://stepik.org/lesson/64657/step/3?unit=41549
+Ответ:
+#include <stdio.h>
+
+int main()
+{
+    int stroka, stolb, i, j;
+    scanf("%d%d",&stroka,&stolb);
+    int arr[stroka][stolb];
+    for(i = 0; i < stroka; i++)
+    {
+        for(j = 0; j < stolb; j++)
+        {
+            scanf("%d",&arr[i][j]);
+        }
+    }
+    for(i = 0; i < stolb; i++)
+    {
+        for(j = 0; j < stroka; j++)
+        {
+            printf("%d ",arr[j][i]);
+        }
+        printf("\n");
+    }
+    return 0;
+}
+
+6. https://stepik.org/lesson/64657/step/6?unit=41549
+Ответ:
+#include <stdio.h>
+
+int main()
+{
+    int n, i, j, gl = 1, pd = 1;
+    scanf("%d",&n);
+    int arr[n][n];
+    for(i = 0; i < n; i++)
+    {
+        for(j = 0; j < n; j++)
+        {
+            scanf("%d",&arr[i][j]);
+        }
+    }
+    for(i = 0; i < n; i++)
+    {
+        for(j = 0; j < n; j++)
+        {
+            if(i == j)
+            {
+                gl *= arr[i][j];
+            }
+            if(i + j == n-1)
+            {
+                pd *= arr[i][j];
+            }
+        }
+    }
+    if(pd > gl)
+    {
+        printf("%d %d",pd,gl);
+    }
+    else
+    {
+        printf("%d %d",gl, pd);
+    }
+    return 0;
+}
