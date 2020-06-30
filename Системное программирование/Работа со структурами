@@ -1,0 +1,39 @@
+1. https://stepik.org/lesson/198394/step/1?unit=172617
+Ответ:
+#include <stdio.h>
+
+struct date
+{
+    int year, month;
+};
+
+int main()
+{
+
+    struct date d1, d2, d3;
+
+    scanf("%d %d %d %d", &d1.year, &d1.month, &d2.year, &d2.month);
+    scanf("%d %d", &d3.year, &d3.month);
+
+    if(d3.year > d1.year && d3.year < d2.year)
+    {
+        printf("Да");
+    }
+    else if(d3.year == d1.year || d3.year == d2.year)
+    {
+        if(d3.month >= d1.month || d3.month <= d2.month)
+        {
+            printf("Да");
+        }
+        else
+        {
+            printf("Нет");
+        }
+    }
+    else
+    {
+        printf("Нет");
+    }
+
+    return 0;
+}
