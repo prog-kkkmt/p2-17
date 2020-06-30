@@ -69,3 +69,40 @@ int main()
     printf("%d", factorial(n));
     return 0;
 } 
+
+5. https://stepik.org/lesson/65094/step/6?unit=41881
+Ответ:
+#include <stdio.h>
+
+int factorial(int p)
+{
+    int i = 1, f = 1;
+    for(i = 1; i <= p; i++)
+    {
+        f *= i;
+    }
+    return f;
+}
+
+int combin(int n, int k)
+{
+    int i = 1, f1 = 1, f2 = 1, answer;
+    for(i = 1; i <= k; i++)
+    {
+        f1 *= i;
+    }
+    for(i = 1; i <= n - k; i++)
+    {
+        f2 *= i;
+    }
+    answer = f1 * f2;
+    return factorial(n) / answer;
+}
+
+int main()
+{
+    int n, k;
+    scanf("%d %d", &n, &k);
+    printf("%d", combin(n, k));
+    return 0;
+}
