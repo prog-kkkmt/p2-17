@@ -1,0 +1,63 @@
+# depslib dependency file v1.0
+1593826265 source:c:\prog\Билет 17\main.cpp
+	"doctors.h"
+	"patients.h"
+	"diagnosis.h"
+	"receptions.h"
+
+1593827824 c:\prog\Билет 17\doctors.h
+	<iostream>
+	<fstream>
+	<string>
+	"receptions.h"
+
+1593827925 c:\prog\Билет 17\receptions.h
+	<iostream>
+	<fstream>
+	<string>
+
+1593828138 c:\prog\Билет 17\patients.h
+	<iostream>
+	<fstream>
+	<string>
+	"receptions.h"
+
+1593828061 c:\prog\Билет 17\diagnosis.h
+	<iostream>
+	<fstream>
+	<string>
+
+1593831858 source:c:\prog\Билет №17. Клиника\Клиника\main.cpp
+	"doctors.h"
+	"patients.h"
+	"diagnosis.h"
+	"appointments.h"
+
+1593830590 c:\prog\Билет №17. Клиника\Клиника\doctors.h
+	<iostream>
+	<fstream>
+	<string>
+	"appointments.h"
+
+1593829810 c:\prog\Билет №17. Клиника\Клиника\receptions.h
+	<iostream>
+	<fstream>
+	<string>
+
+1593830590 c:\prog\Билет №17. Клиника\Клиника\patients.h
+	<iostream>
+	<fstream>
+	<string>
+	"appointments.h"
+
+1593830404 c:\prog\Билет №17. Клиника\Клиника\diagnosis.h
+	<iostream>
+	<fstream>
+	<string>
+	<locale>
+
+1593830604 c:\prog\Билет №17. Клиника\Клиника\appointments.h
+	<iostream>
+	<fstream>
+	<string>
+
