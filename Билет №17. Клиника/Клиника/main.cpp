@@ -16,9 +16,9 @@ int main()
 	do
     {
         cout << endl;
-        cout << "1. Ïàöèåíòîâ ïîáûâàâøèõ áîëüøå ğàçà" << endl;
-        cout << "2. Îòíîñèòåëüíàÿ çàãğóçêà ïàöèåíòàìè ïî ñïåöèàëüíîñòè" << endl;
-        cout << "3. Âûõîä" << endl;
+        cout << "1. ÃÃ Ã¶Ã¨Ã¥Ã­Ã²Ã®Ã¢ Ã¯Ã®Ã¡Ã»Ã¢Ã Ã¢Ã¸Ã¨Ãµ Ã¡Ã®Ã«Ã¼Ã¸Ã¥ Ã°Ã Ã§Ã " << endl;
+        cout << "2. ÃÃ²Ã­Ã®Ã±Ã¨Ã²Ã¥Ã«Ã¼Ã­Ã Ã¿ Ã§Ã Ã£Ã°Ã³Ã§ÃªÃ  Ã¯Ã Ã¶Ã¨Ã¥Ã­Ã²Ã Ã¬Ã¨ Ã¯Ã® Ã±Ã¯Ã¥Ã¶Ã¨Ã Ã«Ã¼Ã­Ã®Ã±Ã²Ã¨" << endl;
+        cout << "3. Ã‚Ã»ÃµÃ®Ã¤" << endl;
 
         cin >> x;
         cout << endl;
@@ -27,10 +27,10 @@ int main()
 		{
 		    case 1: p.print_patient(); break;
 		    case 2: d.print_specialist(); break;
-		    case 4: break;
-		    default: cout << "Íåò òàêîãî ïóíêòà" << endl; break;
+		    case 3: break;
+		    default: cout << "ÃÃ¥Ã² Ã²Ã ÃªÃ®Ã£Ã® Ã¯Ã³Ã­ÃªÃ²Ã " << endl; break;
 		};
 	}
-	while(x != 4);
+	while(x != 3);
     return 0;
 }
