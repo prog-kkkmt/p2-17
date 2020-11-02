@@ -1,0 +1,52 @@
+object Form4: TForm4
+  Left = 679
+  Height = 240
+  Top = 489
+  Width = 320
+  Caption = 'Form4'
+  ClientHeight = 240
+  ClientWidth = 320
+  LCLVersion = '2.0.10.0'
+  object Button1: TButton
+    Left = 120
+    Height = 25
+    Top = 46
+    Width = 75
+    Caption = 'Найти'
+    OnClick = Button1Click
+    TabOrder = 0
+  end
+  object Edit1: TEdit
+    Left = 10
+    Height = 23
+    Top = 48
+    Width = 80
+    TabOrder = 1
+  end
+  object Label1: TLabel
+    Left = 240
+    Height = 15
+    Top = 48
+    Width = 34
+    Caption = 'Label1'
+    ParentColor = False
+  end
+  object Button2: TButton
+    Left = 8
+    Height = 25
+    Top = 168
+    Width = 75
+    Caption = 'Удалить'
+    OnClick = Button2Click
+    TabOrder = 2
+  end
+  object Button3: TButton
+    Left = 224
+    Height = 25
+    Top = 208
+    Width = 75
+    Caption = 'Выход'
+    OnClick = Button3Click
+    TabOrder = 3
+  end
+end
