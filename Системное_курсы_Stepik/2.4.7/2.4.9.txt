@@ -1,0 +1,10 @@
+С помощью утилиты cat создайте файл ~/resolv.conf из файлов head base google1 google2, 
+расположенных в каталоге /etc/resolvconf/head base google1 google2.d. Внимание! 
+Сохраняйте последовательность файлов в команде cat, как указано в этом задании.
+
+1 создал файл cat: cat > resolv.conf
+2 перешёл в каталог /etc/resolvconf/resolv.conf.d.
+3 Той же утилитой CAT ОБЪЕДЕНИЛ файлы head base google1 google2
+cat head base google1 google2 > /home/box/resolv.conf
+4 проверил на присутствие текста в файле resolv.conf
+cat resolv.conf
